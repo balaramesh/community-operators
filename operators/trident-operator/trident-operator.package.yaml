@@ -1,0 +1,5 @@
+packageName: trident-operator
+defaultChannel: stable
+channels:
+  - name: stable
+    currentCSV: trident-operator.v21.4.0

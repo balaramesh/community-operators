@@ -1,0 +1,761 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  name: trident-operator.v21.4.0
+  namespace: placeholder
+  annotations:
+    alm-examples: |
+      [
+        {
+            "apiVersion": "trident.netapp.io/v1",
+            "kind": "TridentOrchestrator",
+            "metadata": {
+                "creationTimestamp": "2021-07-19T20:14:34Z",
+                "generation": 1,
+                "managedFields": [
+                    {
+                        "apiVersion": "trident.netapp.io/v1",
+                        "fieldsType": "FieldsV1",
+                        "fieldsV1": {
+                            "f:spec": {
+                                ".": {},
+                                "f:debug": {},
+                                "f:namespace": {}
+                            }
+                        },
+                        "manager": "kubectl",
+                        "operation": "Update",
+                        "time": "2021-07-19T20:14:34Z"
+                    },
+                    {
+                        "apiVersion": "trident.netapp.io/v1",
+                        "fieldsType": "FieldsV1",
+                        "fieldsV1": {
+                            "f:status": {
+                                ".": {},
+                                "f:currentInstallationParams": {
+                                    ".": {},
+                                    "f:IPv6": {},
+                                    "f:autosupportHostname": {},
+                                    "f:autosupportImage": {},
+                                    "f:autosupportProxy": {},
+                                    "f:autosupportSerialNumber": {},
+                                    "f:debug": {},
+                                    "f:enableNodePrep": {},
+                                    "f:imagePullSecrets": {},
+                                    "f:imageRegistry": {},
+                                    "f:k8sTimeout": {},
+                                    "f:kubeletDir": {},
+                                    "f:logFormat": {},
+                                    "f:probePort": {},
+                                    "f:silenceAutosupport": {},
+                                    "f:tridentImage": {}
+                                },
+                                "f:message": {},
+                                "f:namespace": {},
+                                "f:status": {},
+                                "f:version": {}
+                            }
+                        },
+                        "manager": "trident-operator",
+                        "operation": "Update",
+                        "time": "2021-07-19T20:14:34Z"
+                    }
+                ],
+                "name": "trident",
+                "resourceVersion": "10542",
+                "selfLink": "/apis/trident.netapp.io/v1/tridentorchestrators/trident",
+                "uid": "e62c2258-50a9-4a9d-990c-381c24158999"
+            },
+            "spec": {
+                "debug": false,
+                "namespace": "default",
+                "silenceAutosupport": false
+            },
+            "status": {
+                "currentInstallationParams": {
+                    "IPv6": "false",
+                    "autosupportHostname": "",
+                    "autosupportImage": "netapp/trident-autosupport:21.01",
+                    "autosupportProxy": "",
+                    "autosupportSerialNumber": "",
+                    "debug": "false",
+                    "enableNodePrep": "false",
+                    "imagePullSecrets": [],
+                    "imageRegistry": "",
+                    "k8sTimeout": "30",
+                    "kubeletDir": "/var/lib/kubelet",
+                    "logFormat": "text",
+                    "probePort": "17546",
+                    "silenceAutosupport": "false",
+                    "tridentImage": "netapp/trident:21.04.1"
+                },
+                "message": "Trident installed",
+                "namespace": "default",
+                "status": "Installed",
+                "version": "v21.04.1"
+            }
+        }
+      ]
+            #      [{"apiVersion":"","kind":"TridentOrchestrator","metadata":{"name":""},"spec":{}}]
+    categories: Storage
+    certified: 'false'
+    createdAt: ''
+    description: >-
+      Trident is a dynamic storage provisioner for NetApp storage solutions,
+      designed for Kubernetes
+    containerImage: ''
+    support: ''
+    capabilities: Seamless Upgrades
+    repository: ''
+spec:
+  displayName: Trident operator
+  description: >+
+    Trident is a fully supported open source project maintained by
+    [NetApp](https://www.netapp.com). It has been designed from the ground up to
+    help you meet your containerized applications' persistence demands using
+    industry-standard interfaces, such as the [Container Storage Interface
+    (CSI)](https://kubernetes-csi.github.io/docs/introduction.html).
+
+        Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for your Kubernetes workloads. It enables your containerized applications to quickly and easily consume persistent storage from NetApp’s broad portfolio that includes [ONTAP](https://www.netapp.com/us/products/data-management-software/ontap.aspx) (AFF/FAS/Select/Cloud), [Element](https://www.netapp.com/data-management/element-software?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident) (HCI/SolidFire), and [SANtricity](https://www.netapp.com/data-management/santricity?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident) (E/EF-Series) data management software, as well as the [Azure NetApp Files](https://cloud.netapp.com/azure-netapp-files?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident) service, [Cloud Volumes Service on Google Cloud](https://cloud.netapp.com/cloud-volumes-service-for-gcp?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident), and the [Cloud Volumes Service on AWS](https://cloud.netapp.com/cloud-volumes-service-for-aws?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident).
+
+        Trident is also a foundational technology for NetApp's [Astra](http://cloud.netapp.com/Astra?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident), which addresses your data protection, disaster recovery, portability, and migration use cases for Kubernetes workloads leveraging NetApp's industry-leading data management technology for snapshots, backups, replication, and cloning.  
+
+        Detailed documentation for Trident can be found on [Read the Docs](https://netapp-trident.readthedocs.io).
+
+        Take a look at the [Astra documentation](https://docs.netapp.com/us-en/astra/) to get started today.
+
+        See [NetApp's Support site](https://mysupport.netapp.com/site/info/version-support) for details on Trident's support policy under the [Trident's Release and Support Lifecycle](https://mysupport.netapp.com/site/info/trident-support) tab.
+    The Trident operator simplifies the deployment and management of Trident.
+    Users can use the Trident operator to automatically deploy and self-heal
+    Trident, as well as handle Kubernetes upgrades.
+
+    N/A
+
+
+  maturity: stable
+  version: 21.4.0
+  minKubeVersion: 1.14.0
+  keywords:
+    - ONTAP
+    - NetApp
+  maintainers:
+    - name: NetApp
+      email: ng-trident@netapp.com
+  provider:
+    name: 'NetApp, Inc'
+  labels: {}
+  selector:
+    matchLabels: {}
+  links:
+    - name: Documentation
+      url: 'https://netapp-trident.readthedocs.io/en/latest/kubernetes/index.html'
+  icon:
+    - base64data: >-
+        iVBORw0KGgoAAAANSUhEUgAAAFAAAAAoCAYAAABpYH0BAAAEgElEQVRoge2aW2gUVxjHv2ipzYOXQrHP4oMPPvhQKFSLbRH1Qa3XVEG01GQu8RIvUERB8UH6oETUpwSjFW2hRkhF24IGq7JzWZNobOJKgqKNIYsx11YTstmdPT4k6+7MnOvszM4K/uF72Tnnu/zmzHfmsgDForL6D0HREdNkfSjsVItTqmFxAVR0FHaqxadtN9dyw1N0BIoRA0AlYaddWG25Phtk7bUYKA8m3dofdqn+KWhYPFZx81zYGNySDcxK0l5BWX0pKEaau7htEXSldQAlU2kkqvhwAq04FUMga/wwVfNXUM0z4fXVH2785HklyBr6vXVAGJSIxlMWmlVl5rdiA9HXtz7wCm1wJBkoNJpKKw1vEFXzhb8Adz/9VCiB8ghKp8Uvy6DUcL9fDGBlc5e/ADOqevANK7hfisVHfPe55FhbSJdwRoqhkQIvO/HQt0K/qm4P7MRYVjokgNKd3aSgF8xed6LpNJqm6ujvjmGhAkEmF/ffqFg//ezoAzT3YAs+TmEhohJSsKUnYwwg9tuMGVVRFIuPCMPLWHVjD3buhpoOV6yG1n56buQ4nf7yy7PnQYX7Xu1e16u3x8dTFrrWlr3FWV/TQYzTM5RAy09lT9rrhIXKLzx2jbcs9iZW3dhDWYV+PioSgqw8TV99uVqEaeAk0QA6teu3p3n1SyJA1WgMHGDv/+NCyX68J2qbP2tPNC+A8eFE3ptN8L1QappPCpDiuExYCbf3uPshL0DnmI4Xo8UA8MgUqGx6wmrmoOho87lO4YSfD44x4fAAvNY2mPfqYwLMmKynYeuf+/j48Tj0OWmneAA6d1wvTz6XW/qEaoXtzSfYAFXjpIjTAw3/Cid+3ui1+ZheZdqOb6h1A7QcgOwrRBPOweWDx7gl6Lh7aCz45Ck203ECuOKLvAZTdASKdpwfoKztFC3i8NWu0AD+cvdl8LF9Ey2I7M8zq8h9oIh+drQOjKX8A0UW8bEuY/MO3SsqgGNJi73CpNuXCgEvK0WPs5IqkTVPr+v9Avjj5WcFvjw9geT8nvv9HTTM+TYlH4AS5rmYaDv/KQ8XXq4Unf/DuKIjkDS08FgbGktangH+0T6APpJEd1MdwcqaL8LGRVbZxRWedrmgTdYTYaPhU9igaLbXKA0bD137OheEDoll74y2/tVMLWTH/SXYed+enQ5r6j6HtWdWw7qajRNWtxjW1M4lxqLFUc0UrKtbFFSZhdN35xeDaib9/+Y6qVW1n0z0usijQPy/13sVqfgbcPfkeHpvU3QEW67OIcYQib3r8TTP+eLGH0FT3P60Puoc4Q2JNSAXoFNq9CyzCFws1bQ3eTlS65hTyvRFkrvwUftxDED78Y3ZuZEFYgHxx8kAAaZ6AihrX3Lnkvtb5d1+rOF9PAdZz/71bnuTNAmIDlDSNwUHkGSyVsHlM1+AinEda3gfEy1oc3SGI9/B8ACS5sktM7l84gGWgGresM0pq5/KnR+5nm7b76pxm6unFQwgAIBiOHsX3Sd9Ffcx86OZe3w33l/OP2pxYgB8A77358YHymesAAAAAElFTkSuQmCC
+      mediatype: image/png
+  customresourcedefinitions:
+    owned:
+      - name: tridentorchestrators.trident.netapp.io
+        displayName: TridentOrchestrator
+        kind: TridentOrchestrator
+        version: v1
+        description: Trident Orchestrator
+        resources:
+          - version: v1
+            kind: Deployment
+          - version: v1
+            kind: Service
+          - version: v1
+            kind: ReplicaSet
+          - version: v1
+            kind: Pod
+          - version: v1
+            kind: Secret
+          - version: v1
+            kind: ConfigMap
+        specDescriptors: []
+        statusDescriptors: []
+    required: []
+  install:
+    strategy: deployment
+    spec:
+      permissions:
+        - serviceAccountName: trident-operator
+          rules:
+            - apiGroups:
+              - ""
+              resources:
+                - namespaces
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - ""
+              resources:
+                - persistentvolumeclaims
+                - persistentvolumes
+              verbs:
+                - get
+                - list
+                - create
+                - update
+                - watch
+                - delete
+            - apiGroups:
+                - storage.k8s.io
+              resources:
+                - storageclasses
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+              - ""
+              resources:
+                - events
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - pods
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - nodes
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+            - apiGroups:
+              - ""
+              resources:
+                - secrets
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - delete
+                - create
+                - patch
+            - apiGroups:
+              - storage.k8s.io
+              resources:
+                - volumeattachments
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - patch
+            - apiGroups:
+              - storage.k8s.io
+              resources:
+                - volumeattachments/status
+              verbs:
+                - update
+                - patch
+            - apiGroups:
+              - snapshot.storage.k8s.io
+              resources:
+                - volumesnapshots
+                - volumesnapshotclasses
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - patch
+            - apiGroups:
+              - snapshot.storage.k8s.io
+              resources:
+                - 'volumesnapshots/status'
+                - volumesnapshotclasses/status
+              verbs:
+                - update
+                - patch
+            - apiGroups:
+              - snapshot.storage.k8s.io
+              resources:
+                - volumesnapshotcontents
+              verbs:
+                - get
+                - list
+                - create
+                - delete
+                - update
+                - watch
+                - patch
+            - apiGroups:
+              - csi.storage.k8s.io
+              resources:
+                - csidrivers
+                - csinodeinfos
+              verbs:
+                - get
+                - list
+                - watch
+                - delete
+                - update
+                - patch
+                - create
+            - apiGroups:
+              - storage.k8s.io
+              resources:
+                - csidrivers
+                - csinodes
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+              - apiextensions.k8s.io
+              resources:
+                - customresourcedefinitions
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+              - trident.netapp.io
+              resources:
+                - tridentversions
+                - tridentbackends
+                - tridentstorageclasses
+                - tridentvolumes
+                - tridentnodes
+                - tridenttransactions
+                - tridentsnapshots
+                - tridentbackendconfigs
+                - tridentbackendconfigs/status
+                - tridentmirrorrelationships
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - delete
+                - create
+                - patch
+            - apiGroups:
+              - ""
+              resources:
+                - namespaces
+              verbs:
+                - create
+            - apiGroups:
+              - apps
+              resources:
+                - deployments
+                - daemonsets
+                - statefulsets
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+              - ""
+      clusterPermissions:
+        - serviceAccountName: trident-operator
+          rules:
+            - apiGroups:
+                - ""
+              resources:
+                - namespaces
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - ""
+              resources:
+                - persistentvolumes
+                - persistentvolumeclaims
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - persistentvolumeclaims/status
+              verbs:
+                - update
+                - patch
+            - apiGroups:
+                - storage.k8s.io
+              resources:
+                - storageclasses
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - events
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - secrets
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - pods
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - pods/log
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - ""
+              resources:
+                - nodes
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+            - apiGroups:
+                - storage.k8s.io
+              resources:
+                - volumeattachments
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - patch
+            - apiGroups:
+                - storage.k8s.io
+              resources:
+                - volumeattachments/status
+              verbs:
+                - update
+                - patch
+            - apiGroups:
+                - snapshot.storage.k8s.io
+              resources:
+                - volumesnapshots
+                - volumesnapshotclasses
+              verbs:
+                - get
+                - list
+                - watch
+                - update
+                - patch
+            - apiGroups:
+                - snapshot.storage.k8s.io
+              resources:
+                - volumesnapshots/status
+                - volumesnapshotcontents/status
+              verbs:
+                - update
+                - patch
+            - apiGroups:
+                - snapshot.storage.k8s.io
+              resources:
+                - volumesnapshotcontents
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - csi.storage.k8s.io
+              resources:
+                - csidrivers
+                - csinodeinfos
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - storage.k8s.io
+              resources:
+                - csidrivers
+                - csinodes
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - apiextensions.k8s.io
+              resources:
+                - customresourcedefinitions
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - trident.netapp.io
+              resources:
+                - tridentversions
+                - tridentbackends
+                - tridentstorageclasses
+                - tridentvolumes
+                - tridentnodes
+                - tridenttransactions
+                - tridentsnapshots
+                - tridentbackendconfigs
+                - tridentbackendconfigs/status
+                - tridentprovisioners
+                - tridentprovisioners/status
+                - tridentorchestrators
+                - tridentorchestrators/status
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - policy
+              resources:
+                - podsecuritypolicies
+              verbs:
+                - use
+              resourceNames:
+                - tridentpods
+            - apiGroups:
+                - ""
+              resources:
+                - namespaces
+              verbs:
+                - create
+            - apiGroups:
+                - apps
+              resources:
+                - deployments
+                - daemonsets
+                - statefulsets
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+            - apiGroups:
+                - apps
+              resources:
+                - deployments
+                - daemonsets
+                - statefulsets
+              verbs:
+                - delete
+                - update
+                - patch
+              resourceNames:
+                - trident-csi
+                - trident
+            - apiGroups:
+                - ""
+              resources:
+                - pods/exec
+                - services
+                - serviceaccounts
+              verbs:
+                - list
+                - create
+            - apiGroups:
+                - ""
+              resources:
+                - pods/exec
+                - services
+                - serviceaccounts
+              verbs:
+                - delete
+                - update
+                - patch
+              resourceNames:
+                - trident-csi
+                - trident
+            - apiGroups:
+                - authorization.openshift.io
+                - rbac.authorization.k8s.io
+              resources:
+                - clusterroles
+                - clusterrolebindings
+              verbs:
+                - list
+                - create
+            - apiGroups:
+                - authorization.openshift.io
+                - rbac.authorization.k8s.io
+              resources:
+                - clusterroles
+                - clusterrolebindings
+              verbs:
+                - delete
+                - update
+                - patch
+              resourceNames:
+                - trident-csi
+                - trident
+            - apiGroups:
+                - policy
+              resources:
+                - podsecuritypolicies
+              verbs:
+                - list
+                - create
+            - apiGroups:
+                - policy
+              resources:
+                - podsecuritypolicies
+              resourceNames:
+                - tridentpods
+              verbs:
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - security.openshift.io
+              resources:
+                - securitycontextconstraints
+              verbs:
+                - get
+                - list
+                - create
+            - apiGroups:
+                - security.openshift.io
+              resources:
+                - securitycontextconstraints
+              resourceNames:
+                - trident
+              verbs:
+                - delete
+                - update
+                - patch
+            - apiGroups:
+                - policy
+              resources:
+                - podsecuritypolicies
+              verbs:
+                - use
+              resourceNames:
+                - tridentoperatorpods
+      deployments:
+        - name: trident-operator
+          spec:
+            replicas: 1
+            strategy:
+              type: Recreate
+            selector:
+              matchLabels:
+                app: operator.trident.netapp.io
+                name: trident-operator
+            template:
+              metadata:
+                labels:
+                  app: operator.trident.netapp.io
+                  name: trident-operator
+              spec:
+                containers:
+                  - command:
+                      - /trident-operator
+                      - '--debug'
+                    env:
+                      - name: POD_NAME
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.name
+                      - name: OPERATOR_NAME
+                        value: trident-operator
+                    image: 'netapp/trident-operator:21.04.0'
+                    imagePullPolicy: IfNotPresent
+                    name: trident-operator
+                nodeSelector:
+                  kubernetes.io/arch: amd64
+                  kubernetes.io/os: linux
+                serviceAccountName: trident-operator
+  installModes:
+    - type: OwnNamespace
+      supported: false
+    - type: SingleNamespace
+      supported: true
+    - type: MultiNamespace
+      supported: false
+    - type: AllNamespaces
+      supported: false
